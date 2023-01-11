@@ -1,19 +1,21 @@
-// Step 1: Import React
-import * as React from 'react'
-// import { Link } from 'gatsby'
-import Layout from '../components/layout'
+import React, { useState } from 'react';
 
-// Step 2: Define your component
-const IndexPage = () => {
-    return (
-        <Layout pageTitle="Home Page">
-            <p>I'm making this by following the Gatsby Tutorial.</p>
-        </Layout>
-    )
-}
+import Layout from '../components/layout';
+import SectionAccordion from '../components/section-accordion/section-accordion';
+import LogoutAlert from '../components/logout-alert';
+import NotifPopup from '../components/notif-popup';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// You'll learn about this in the next task, just copy it for now
-export const Head = () => <title>Home Page</title>
+import { Alert } from 'react-bootstrap';
 
-// Step 3: Export your component
-export default IndexPage
+
+const App = () => (
+    <>
+        <Layout />
+        <SectionAccordion />
+        <NotifPopup btn_title="Test Modal"></NotifPopup>
+        {/* <LogoutAlert /> */}
+    </>
+);
+
+export default App;

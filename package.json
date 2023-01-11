@@ -15,8 +15,14 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.7",
+    "bootstrap": "^5.2.3",
     "gatsby": "^5.3.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
   }
 }
