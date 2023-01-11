@@ -13,8 +13,6 @@ const App = () => (
     <>
         <Layout />
         <SectionAccordion />
-        <NotifPopup btn_title="Test Modal"></NotifPopup>
-        {/* <LogoutAlert /> */}
     </>
 );
 
