@@ -1,0 +1,18 @@
+:root {
+  --apsu-red: #C41E3A;
+  --apsu-gray: #ADAFAA;
+}
+
+.accordion-button[aria-expanded="true"] {
+  background-color: var(--apsu-red) !important;
+  color: white !important;
+}
+
+.accordion-button:hover {
+  background-color: var(--apsu-red) !important;
+  color: white !important;
+}
+
+.accordion-button:focus {
+  border-color: var(--apsu-gray) !important;;
+}

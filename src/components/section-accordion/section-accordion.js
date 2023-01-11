@@ -5,11 +5,17 @@ import Stack from 'react-bootstrap/Stack';
 import SectionPiece from './section-piece';
 import NotifPopup from '../notif-popup';
 
+import "../../styles/custom-colors.css" 
+
+const red_accordion = { background: "#C41E3A", color: "white" };
+
 const SectionAccordion = () => {
     return (
-        <Accordion flush>
+        <Accordion>
             <Accordion.Item eventKey="0">
-                <Accordion.Header>Personal Information</Accordion.Header>
+                {/* <Accordion.Header> */}
+                    <Accordion.Button>Personal Information</Accordion.Button>
+                {/* </Accordion.Header> */}
                 <Accordion.Body>
                     <Stack>
                         <SectionPiece title='Personal Information' description='View your personal information, such as your name and address' />
@@ -35,7 +41,7 @@ const SectionAccordion = () => {
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="2">
-                <Accordion.Header>Financial Aid</Accordion.Header>
+                <Accordion.Button>Financial Aid</Accordion.Button>
                 <Accordion.Body>
                     <Stack>
                         <SectionPiece title='Financial Aid Status' description='View your financial holds' />

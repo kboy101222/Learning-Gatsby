@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-import Layout from '../components/layout';
+import SiteHeader from '../components/default-header';
 import SectionAccordion from '../components/section-accordion/section-accordion';
-import LogoutAlert from '../components/logout-alert';
-import NotifPopup from '../components/notif-popup';
+import BottomAlert from '../components/bottom-alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Alert } from 'react-bootstrap';
@@ -11,8 +10,9 @@ import { Alert } from 'react-bootstrap';
 
 const App = () => (
     <>
-        <Layout />
+        <SiteHeader />
         <SectionAccordion />
+        <BottomAlert />
     </>
 );
 
