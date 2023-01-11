@@ -14,13 +14,9 @@ const SectionAccordion = () => {
                     <Stack>
                         <SectionPiece title='Personal Information' description='View your personal information, such as your name and address' />
                         <SectionPiece title='Emergency Contacts' description='View your emergency contacts' />
-                        {/* <SectionPiece title='View Your PoBox and Campus Address' description=""></SectionPiece> */}
                         <NotifPopup btn_title="View Your PoBox and Campus Address" title="PO Box and Campus Address">
                             <p>You do not currently have a PO Box Assigned</p>
                             <p>If you believe this is incorrect, please contact the Campus Post Office</p>
-                        </NotifPopup>
-                        <NotifPopup btn_title="Test Modal" title="Test Modal">
-                            <h1>This is a test</h1>
                         </NotifPopup>
                     </Stack>
                 </Accordion.Body>
