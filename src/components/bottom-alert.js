@@ -1,37 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Button, ButtonGroup, Stack, ToggleButton } from 'react-bootstrap';
 
-function ThemeSwitch() {
-    const [darkMode, setDarkMode] = useState(false);
+class ThemeSwitch extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { darkMode: false, isDarkMode: false };
+        this.toggleDarkMode = this.toggleDarkMode.bind(this);
+    }
 
-    useEffect(() => {
-        darkMode
+    toggleDarkMode() {
+        this.setState({ darkMode: !this.state.darkMode });
+        this.state.darkMode
             ? document.documentElement.setAttribute('data-bs-theme', 'dark')
-            : document.documentElement.removeAttribute('data-bs-theme')
-    }, [darkMode]);
+            : document.documentElement.setAttribute('data-bs-theme', 'light')
 
-    return (
-        // <ButtonGroup className="mb-2">
-        <ToggleButton
-            id="toggle-check"
-            type="checkbox"
-            variant={
-                darkMode
-                    ? "light"
-                    : "dark"
-            }
-            checked={darkMode}
-            value="1"
-            onChange={(e) => setDarkMode(e.currentTarget.checked)}
-            className="float-right"
-        >
-            {darkMode
-                ? "Light Mode"
-                : "Dark Mode"
-            }
-        </ToggleButton>
-        // </ButtonGroup>
-    )
+        localStorage.setItem('darkMode', this.state.darkMode);
+    }
+
+    componentDidMount() {
+        const isDarkMode = localStorage.getItem('darkMode') === true;
+        if (isDarkMode) {
+            localStorage.setItem('darkMode', true);
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+            this.setState({ darkMode: true });
+        } else {
+            localStorage.setItem('darkMode', false);
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+            this.setState({ darkMode: false });
+        }
+    }
+
+
+    render() {
+        return (
+            <ToggleButton
+                id="toggle-check"
+                type="checkbox"
+                variant={
+                    this.state.darkMode
+                        ? "light"
+                        : "dark"
+                }
+                checked={this.state.darkMode}
+                value="1"
+                onChange={(e) => this.toggleDarkMode()}
+                className="float-right"
+            >
+                {this.state.darkMode
+                    ? "Light Mode"
+                    : "Dark Mode"
+                }
+            </ToggleButton>
+        )
+    }
 }
 
 const BottomAlert = () => {

@@ -4,12 +4,32 @@ import { Button } from 'react-bootstrap';
 class SectionPiece extends Component {
     constructor(props) {
         super(props);
-        this.state = {hover: false};
+        this.state = {hover: false, darkMode: false};
         this.toggleHover = this.toggleHover.bind(this);
     }
 
     toggleHover() {
         this.setState({hover: !this.state.hover});
+    }
+
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            100
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        var rootNode = document.documentElement;
+        if (rootNode.getAttribute('data-bs-theme') === 'dark') {
+            this.setState({darkMode: true});
+        } else {
+            this.setState({darkMode: false});
+        }
     }
 
     render() {
@@ -21,11 +41,21 @@ class SectionPiece extends Component {
                 transistion: 'background 1s ease'
             };
         } else {
-            linkStyle = {
-                background: 'white',
-                color: 'black',
-                transistion: 'background 1s ease'
-            };
+            if (this.state.darkMode) {
+                linkStyle = {
+                    color: 'white'
+                };
+            } else {
+                linkStyle = {
+                    color: 'black',
+                    background: 'white'
+                };
+            }
+            // linkStyle = {
+            //     background: 'white',
+            //     color: 'black',
+            //     transistion: 'background 1s ease'
+            // };
         }
         return (
             <Button variant="" style={linkStyle} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} className="text-start">
