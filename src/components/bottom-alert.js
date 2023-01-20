@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Button, ButtonGroup, Stack, ToggleButton } from 'react-bootstrap';
+import * as helper from "../helpers";
 
 class ThemeSwitch extends React.Component {
     constructor(props) {
         super(props);
         this.state = { darkMode: false, isDarkMode: false };
         this.toggleDarkMode = this.toggleDarkMode.bind(this);
+        this.setDarkMode = this.setDarkMode.bind(this);
     }
 
     toggleDarkMode() {
@@ -17,16 +19,23 @@ class ThemeSwitch extends React.Component {
         localStorage.setItem('darkMode', this.state.darkMode);
     }
 
+    setDarkMode(darkModeState) {
+        this.setState({ darkMode: darkModeState });
+        this.state.darkMode
+            ? document.documentElement.setAttribute('data-bs-theme', 'dark')
+            : document.documentElement.setAttribute('data-bs-theme', 'light')
+
+        localStorage.setItem('darkMode', this.state.darkMode);
+    }
+
     componentDidMount() {
-        const isDarkMode = localStorage.getItem('darkMode') === true;
+        const isDarkMode = helper.getDarkMode();
         if (isDarkMode) {
             localStorage.setItem('darkMode', true);
-            document.documentElement.setAttribute('data-bs-theme', 'dark');
-            this.setState({ darkMode: true });
+            this.setDarkMode(true);
         } else {
             localStorage.setItem('darkMode', false);
-            document.documentElement.setAttribute('data-bs-theme', 'light');
-            this.setState({ darkMode: false });
+            this.setDarkMode(false);
         }
     }
 
