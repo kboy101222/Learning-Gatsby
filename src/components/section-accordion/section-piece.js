@@ -51,11 +51,6 @@ class SectionPiece extends Component {
                     background: 'white'
                 };
             }
-            // linkStyle = {
-            //     background: 'white',
-            //     color: 'black',
-            //     transistion: 'background 1s ease'
-            // };
         }
         return (
             <Button variant="" style={linkStyle} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} className="text-start">

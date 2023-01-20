@@ -1,11 +1,24 @@
 import React from "react";
-import { Container, Navbar, Nav, Image } from "react-bootstrap";
+import { Container, Navbar, Image } from "react-bootstrap";
 import logo from "../images/gov-logo.png";
 
 class SiteHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = { hover: false, darkMode: false };
+    }
+
+    componentDidMount() {
+        const isDarkMode = localStorage.getItem('darkMode') === true;
+        if (isDarkMode) {
+            localStorage.setItem('darkMode', true);
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+            this.setState({ darkMode: true });
+        } else {
+            localStorage.setItem('darkMode', false);
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+            this.setState({ darkMode: false });
+        }
     }
 
     render() {

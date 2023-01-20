@@ -1,17 +1,13 @@
 import React from 'react';
+import {Card, CardGroup, ListGroup} from 'react-bootstrap';
 
-import SiteHeader from '../components/default-header';
-import SectionAccordion from '../components/section-accordion/section-accordion';
-import BottomAlert from '../components/bottom-alert';
-import QuickAccessCard from '../components/quick-access/quick-access-actions';
+class QuickAccessCard extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-import { CardGroup, Card, ListGroup } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-const App = () => (
-    <>
-        <SiteHeader />
-        <CardGroup>
+    render() {
+        return (
             <Card>
                 <Card.Body>
                     <Card.Title>Quick Access</Card.Title>
@@ -24,10 +20,8 @@ const App = () => (
                     </ListGroup>
                 </Card.Body>
             </Card>
-        </CardGroup>
-        <SectionAccordion />
-        <BottomAlert />
-    </>
-);
+        )
+    }
+}
 
-export default App;
+export default QuickAccessCard;

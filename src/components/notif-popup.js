@@ -4,7 +4,7 @@ import { Button, Modal } from 'react-bootstrap';
 class NotifPopup extends Component {
     constructor(props) {
         super(props);
-        this.state = { hover: false, show: false, setShow: false };
+        this.state = { hover: false, show: false, setShow: false, darkMode: false };
         this.toggleHover = this.toggleHover.bind(this);
         this.setShow = this.setShow.bind(this);
     }
@@ -18,6 +18,26 @@ class NotifPopup extends Component {
         this.setState({ hover: !this.state.hover });
     }
 
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            100
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        var rootNode = document.documentElement;
+        if (rootNode.getAttribute('data-bs-theme') === 'dark') {
+            this.setState({darkMode: true});
+        } else {
+            this.setState({darkMode: false});
+        }
+    }
+
     render() {
         var linkStyle;
         if (this.state.hover) {
@@ -27,11 +47,16 @@ class NotifPopup extends Component {
                 transistion: 'background 1s ease'
             };
         } else {
-            linkStyle = {
-                background: 'white',
-                color: 'black',
-                transistion: 'background 1s ease'
-            };
+            if (this.state.darkMode) {
+                linkStyle = {
+                    color: 'white'
+                };
+            } else {
+                linkStyle = {
+                    color: 'black',
+                    background: 'white'
+                };
+            }
         }
         return (
             <>
