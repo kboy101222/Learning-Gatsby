@@ -11,36 +11,39 @@ class ThemeSwitch extends React.Component {
     }
 
     toggleDarkMode() {
+        console.log("bottom-alert.toggleDarkMode");
+        helper.toggleDarkMode();
         this.setState({ darkMode: !this.state.darkMode });
-        this.state.darkMode
-            ? document.documentElement.setAttribute('data-bs-theme', 'dark')
-            : document.documentElement.setAttribute('data-bs-theme', 'light')
-
-        localStorage.setItem('darkMode', this.state.darkMode);
     }
 
     setDarkMode(darkModeState) {
         this.setState({ darkMode: darkModeState });
-        this.state.darkMode
-            ? document.documentElement.setAttribute('data-bs-theme', 'dark')
-            : document.documentElement.setAttribute('data-bs-theme', 'light')
+        helper.setDarkMode(darkModeState);
+        // this.state.darkMode
+        //     ? document.documentElement.setAttribute('data-bs-theme', 'dark')
+        //     : document.documentElement.setAttribute('data-bs-theme', 'light')
 
-        localStorage.setItem('darkMode', this.state.darkMode);
+        // localStorage.setItem('darkMode', this.state.darkMode);
     }
 
     componentDidMount() {
-        const isDarkMode = helper.getDarkMode();
-        if (isDarkMode) {
-            localStorage.setItem('darkMode', true);
-            this.setDarkMode(true);
-        } else {
-            localStorage.setItem('darkMode', false);
-            this.setDarkMode(false);
-        }
+        // const isDarkMode = helper.getDarkMode();
+        // if (isDarkMode) {
+        //     localStorage.setItem('darkMode', true);
+        //     this.setDarkMode(true);
+        // } else {
+        //     localStorage.setItem('darkMode', false);
+        //     this.setDarkMode(false);
+        // }
     }
 
 
     render() {
+        if (helper.getDarkMode()) {
+            this.state.darkMode = true;
+        } else {
+            this.state.darkMode = false;
+        }
         return (
             <ToggleButton
                 id="toggle-check"

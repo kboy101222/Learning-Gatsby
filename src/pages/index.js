@@ -9,12 +9,26 @@ import * as helper from '../helpers'
 import { CardGroup, Card, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+function toggleDarkMode() {
+    helper.toggleDarkMode();
+}
+
 class App extends React.Component {
     constructor(props) {
         super(props);
     }
     
+    componentDidMount() {
+        const darkMode = helper.getDarkMode();
+        console.log(`Dark mode is ${darkMode}`);
+        helper.setDarkMode(darkMode);
+    }
+
     render() {
+        const darkMode = helper.getDarkMode();
+        console.log(`Dark mode is ${darkMode}`);
+        helper.setDarkMode(darkMode);
+
         return (
         <>
             <SiteHeader />
