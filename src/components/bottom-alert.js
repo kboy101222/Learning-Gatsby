@@ -11,7 +11,6 @@ class ThemeSwitch extends React.Component {
     }
 
     toggleDarkMode() {
-        console.log("bottom-alert.toggleDarkMode");
         helper.toggleDarkMode();
         this.setState({ darkMode: !this.state.darkMode });
     }
@@ -19,22 +18,10 @@ class ThemeSwitch extends React.Component {
     setDarkMode(darkModeState) {
         this.setState({ darkMode: darkModeState });
         helper.setDarkMode(darkModeState);
-        // this.state.darkMode
-        //     ? document.documentElement.setAttribute('data-bs-theme', 'dark')
-        //     : document.documentElement.setAttribute('data-bs-theme', 'light')
-
-        // localStorage.setItem('darkMode', this.state.darkMode);
     }
 
     componentDidMount() {
-        // const isDarkMode = helper.getDarkMode();
-        // if (isDarkMode) {
-        //     localStorage.setItem('darkMode', true);
-        //     this.setDarkMode(true);
-        // } else {
-        //     localStorage.setItem('darkMode', false);
-        //     this.setDarkMode(false);
-        // }
+        
     }
 
 
